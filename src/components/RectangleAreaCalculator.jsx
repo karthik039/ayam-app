@@ -1,48 +1,51 @@
 import React, { useEffect, useState } from 'react';
+import '../data/data'
 import './RectangleAreaCalculator.css';
+import { details } from '../data/data';
 
 function RectangleAreaCalculator() {
   const [length, setLength] = useState('18');
   const [width, setWidth] = useState('19.5');
 
-  const [dhanam, setDhnam] = useState('');
-  const [runam, setRunam] = useState('');
-  const [ayam, setAyam] = useState('');
-  const [vayasu, setVayasu] = useState('');
-  const [varam, setVaram] = useState('');
-  const [thidhi, setThidhi] = useState('');
-  const [nakshatram, setNakshatram] = useState('');
-  const [dikruti, setDikruti] = useState('');
-  const [amsha, setAmsha] = useState('');
-  const [yogam, setYogam] = useState('');
+  const [sp, setSP] = useState('');
 
   const calculateShesam = (multi, mod) => {
-    const lengthNum = parseFloat(length);
-    const widthNum = parseFloat(width);
-    let shesam = (lengthNum * widthNum * multi / 9) % mod
+    let shesam = (sp * multi) % mod
     if (shesam == 0) {
       return mod
     } else {
       return shesam
     }
   };
+
   useEffect(() => {
-    setDhnam(calculateShesam(8,12))
-    setRunam(calculateShesam(3,8))
-    setAyam(calculateShesam(9,8))
-    setVayasu(calculateShesam(9,120))
-    setVaram(calculateShesam(9,7))
-    setThidhi(calculateShesam(6,30))
-    setNakshatram(calculateShesam(8,27))
-    setDikruti(calculateShesam(9,8))
-    setAmsha(calculateShesam(6,9))
-    setYogam(calculateShesam(4,27))
+    const lengthNum = parseFloat(length);
+    const widthNum = parseFloat(width);
+    let sp = (lengthNum * widthNum / 9)
+    setSP(sp)
   }, [length, width])
-  
+  const detailsView = Object.keys(details).map(key =>
+    <tr key={key} className='border-col'>
+      <td className='border-col'>
+        {details[key].name}
+      </td>
+      <td className='border-col'> SP x {details[key].multi} / {details[key].mod} =
+        {calculateShesam(details[key].multi, details[key].mod)}
+      </td>
+      <td className='border-col'>
+        <label className={
+          details[key].flag == "true" ?
+            (details[key]?.glist.indexOf(calculateShesam(details[key].multi, details[key].mod)) > -1 ? "success-text" : "failure-text")
+            : ''}>
+          {(details[key].check == "true") && details[key]?.list[calculateShesam(details[key].multi, details[key].mod)]}
+        </label>
+      </td>
+      {/* <br /> */}
+    </tr>)
 
   return (
     <div className="rectangle-calculator">
-      <h1>Ayam Calculator</h1>
+      <h1>Aayam Calculator</h1>
       <div className="side-by-side">
         <div className="input-group">
           <label>
@@ -66,21 +69,93 @@ function RectangleAreaCalculator() {
         </div>
       </div>
 
-      <label>ShetraPadam = {length} x {width} / 9 = {length*width/9}</label>
+      <label>ShetraPadam = {length} x {width} / 9 = {length * width / 9}</label>
 
-      <h4>Ayam - Ganitahm</h4>
-      
-      <label>Dhanam - SP x 8 / 12 = {dhanam}</label><br/>
-      <label>Runam - SP x 3 / 8 = {runam}</label><br/>
-      <label>Ayam - SP x 9 / 8 = {ayam}</label><br/>
-      <label>Vayasu - SP x 9 / 120 = {vayasu}</label><br/>
-      <label>Varam - SP x 9 / 7 = {varam}</label><br/>
-      <label>Thidhi - SP x 6 / 30 = {thidhi}</label><br/>
-      <label>Nakshatram - SP x 8 / 27 = {nakshatram}</label><br/>
-      <label>Dikruti - SP x 9 / 8 = {dikruti}</label><br/>
-      <label>Amsha - SP x 6 / 9 = {amsha}</label><br/>
-      <label>Yogam - SP x 4 / 27 = {yogam}</label><br/><br/>
-      <label>Labam - {dhanam}-{runam} = {dhanam-runam}</label><br/>
+      <h4>ఆయాది గణితము</h4>
+      <table className='border-col'>
+        <tbody>
+          {detailsView}
+        </tbody>
+      </table>
+
+
+      <br />
+      <label>Labam - {calculateShesam(details['Dhanam'].multi, details['Dhanam'].mod)} - {calculateShesam(details['Runam'].multi, details['Runam'].mod)} =
+        {calculateShesam(details['Dhanam'].multi, details['Dhanam'].mod) - calculateShesam(details['Runam'].multi, details['Runam'].mod)}</label><br />
+
+      <br />
+      <div className='flex-div'>
+        West
+        <table className='border-collapse'>
+          <tbody>
+            <tr className='no-border'>
+              <td className='no-border'></td>
+              <td>North</td>
+              <td></td>
+            </tr>
+            <tr className='border-col'>
+              <td className='border-col failure-text'>6 ఖరాయము <br />గాడిద</td>
+              <td className='border-col success-text'>7 గజాయము <br /> ఏనుగు</td>
+              <td className='border-col failure-text'>8 శాకాయము <br /> కాకి </td>
+            </tr>
+            <tr className='border-col'>
+              {/* <td className='no-border'>West</td> */}
+              <td className='border-col success-text'>5 వృషభాయము <br />ఎద్దు</td>
+              <td className='border-col'></td>
+              <td className='border-col success-text'>1 ధ్వజయము<br />పురుష</td>
+              {/* <td className='no-border'>East</td> */}
+            </tr>
+            <tr className='border-col'>
+              <td className='border-col failure-text'>4 శ్వానాయము <br />కుక్క</td>
+              <td className='border-col success-text'>3 సింహయము <br />సింహం</td>
+              <td className='border-col failure-text'>2 ధూమయము <br />పిల్లి</td>
+            </tr>
+            <tr className='no-border'>
+              <td className='no-border'></td>
+              <td>South</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        East
+      </div>
+      <br />
+      <h4>ఏ ఆయం  ఎక్కడ ఉండాలి ?</h4>
+      <div className='flex-div'>
+        West
+        <table className='border-collapse'>
+          <tbody>
+            <tr className='no-border'>
+              <td className='no-border'></td>
+              <td>North</td>
+              <td></td>
+            </tr>
+            <tr className='border-col'>
+              <td className='border-col failure-text'></td>
+              <td className='border-col success-text'>1 ధ్వజయము <br />3 సింహయము<br />7 గజాయము </td>
+              <td className='border-col failure-text'> </td>
+            </tr>
+            <tr className='border-col'>
+              {/* <td className='no-border'>West</td> */}
+              <td className='border-col success-text'>1 ధ్వజయము <br />3 సింహయము<br />5 వృషభాయము <br />7 గజాయము</td>
+              <td className='border-col'></td>
+              <td className='border-col success-text'>1 ధ్వజయము</td>
+              {/* <td className='no-border'>East</td> */}
+            </tr>
+            <tr className='border-col'>
+              <td className='border-col failure-text'></td>
+              <td className='border-col success-text'>1 ధ్వజయము <br />3 సింహయము </td>
+              <td className='border-col failure-text'></td>
+            </tr>
+            <tr className='no-border'>
+              <td className='no-border'></td>
+              <td>South</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        East
+      </div>
     </div>
   );
 }

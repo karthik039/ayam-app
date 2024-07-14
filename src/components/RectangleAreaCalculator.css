@@ -54,3 +54,31 @@
     flex-wrap: wrap;
     gap: 10px;
 }
+
+.border-col {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.no-border {
+    border: none;
+}
+
+.border-collapse {
+    border-collapse: collapse;
+}
+
+.flex-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px
+}
+
+.success-text{
+    color: green;
+}
+
+.failure-text{
+color: red;
+}
