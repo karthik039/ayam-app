@@ -79,7 +79,8 @@ function RectangleAreaCalculator() {
       <label>Nakshatram - SP x 8 / 27 = {nakshatram}</label><br/>
       <label>Dikruti - SP x 9 / 8 = {dikruti}</label><br/>
       <label>Amsha - SP x 6 / 9 = {amsha}</label><br/>
-      <label>Yogam - SP x 4 / 27 = {yogam}</label><br/>
+      <label>Yogam - SP x 4 / 27 = {yogam}</label><br/><br/>
+      <label>Labam - {dhanam}-{runam} = {dhanam-runam}</label><br/>
     </div>
   );
 }
