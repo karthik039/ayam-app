@@ -48,31 +48,19 @@ function RectangleAreaCalculator() {
       <h1>Aayam Calculator</h1>
       <div className="side-by-side">
         <div className="input-group">
-          <label>
-            Length:
-          </label>
-          <input
-            type="number"
-            value={length}
-            onChange={(e) => setLength(e.target.value)}
-          />
+          <label>Length:</label>
+          <input type="number" value={length} onChange={(e) => setLength(e.target.value)}/>
         </div>
         <div className="input-group">
-          <label>
-            Width:
-          </label>
-          <input
-            type="number"
-            value={width}
-            onChange={(e) => setWidth(e.target.value)}
-          />
+          <label>Width:</label>
+          <input type="number" value={width} onChange={(e) => setWidth(e.target.value)}/>
         </div>
       </div>
 
       <label>ShetraPadam = {length} x {width} / 9 = {sp}</label>
 
       <h4>ఆయాది గణితము</h4>
-      <table className='border-col'>
+      <table className='border-col center'>
         <tbody>
           {detailsView}
         </tbody>
