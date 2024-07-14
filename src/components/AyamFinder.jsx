@@ -19,47 +19,57 @@ function AyamFinder() {
   const [len, setlen] = useState([])
   const [wid, setwid] = useState([])
   const [data, setData] = useState([])
-
+  const [isDecimal, setIsDecimal] = useState(false);
+  const toggleDecimal = () => {
+    setIsDecimal(!isDecimal);
+  };
   useEffect(() => {
     const lengthSpan = [];
     for (let i = lengthFrom; i <= lengthTo; i++) {
       i = parseInt(i, 10)
       lengthSpan.push(i);//0 inches
-      // lengthSpan.push(i + 1 / 12);//1 inches
-      // lengthSpan.push(i + 2 / 12);//2 inches
       lengthSpan.push(i + 3 / 12);//3 inches
-      // lengthSpan.push(i + 4 / 12);//4 inches
-      // lengthSpan.push(i + 5 / 12);//5 inches
       lengthSpan.push(i + 6 / 12);//6 inches
-      // lengthSpan.push(i + 7 / 12);//7 inches
-      // lengthSpan.push(i + 8 / 12);//8 inches
       lengthSpan.push(i + 9 / 12);//9 inches
-      // lengthSpan.push(i + 10 / 12);//10 inches
-      // lengthSpan.push(i + 11 / 12);//11 inches
+      if (isDecimal) {
+        lengthSpan.push(i + 1 / 12);//1 inches
+        lengthSpan.push(i + 2 / 12);//2 inches
+        lengthSpan.push(i + 4 / 12);//4 inches
+        lengthSpan.push(i + 5 / 12);//5 inches
+        lengthSpan.push(i + 7 / 12);//7 inches
+        lengthSpan.push(i + 8 / 12);//8 inches
+        lengthSpan.push(i + 10 / 12);//10 inches
+        lengthSpan.push(i + 11 / 12);//11 inches
+      }
     }
     setlen(lengthSpan)
     const widthSpan = [];
     for (let i = widthFrom; i <= widthTo; i++) {
       i = parseInt(i, 10)
       widthSpan.push(i);//0 inches
-      // widthSpan.push(i + (1 / 12));//1 inches
-      // widthSpan.push(i + (2 / 12));//2 inches
       widthSpan.push(i + 3 / 12);//3 inches
-      // widthSpan.push(i + 4 / 12);//4 inches
-      // widthSpan.push(i + 5 / 12);//5 inches
       widthSpan.push(i + 6 / 12);//6 inches
-      // widthSpan.push(i + 7 / 12);//7 inches
-      // widthSpan.push(i + 8 / 12);//8 inches
       widthSpan.push(i + 9 / 12);//9 inches
-      // widthSpan.push(i + 10 / 12);//10 inches
-      // widthSpan.push(i + 11 / 12);//11 inches
+      if (isDecimal) {
+        widthSpan.push(i + (1 / 12));//1 inches
+        widthSpan.push(i + (2 / 12));//2 inches
+        widthSpan.push(i + 4 / 12);//4 inches
+        widthSpan.push(i + 5 / 12);//5 inches
+        widthSpan.push(i + 7 / 12);//7 inches
+        widthSpan.push(i + 8 / 12);//8 inches
+        widthSpan.push(i + 10 / 12);//10 inches
+        widthSpan.push(i + 11 / 12);//11 inches
+      }
     }
     setwid(widthSpan)
     const combinations = [];
     for (let i = 0; i < lengthSpan.length; i++) {
       for (let j = 0; j < widthSpan.length; j++) {
         let sp = Math.trunc(lengthSpan[i] * widthSpan[j] / 9)
-
+        let aExact = "No"
+        if (sp == lengthSpan[i] * widthSpan[j] / 9) {
+          aExact = "Yes"
+        }
         let a1 = calculateShesam(sp, details['Dhanam'].multi, details['Dhanam'].mod)
         let a2 = calculateShesam(sp, details['Runam'].multi, details['Runam'].mod)
         if (a1 - a2 < 4) {
@@ -91,11 +101,12 @@ function AyamFinder() {
         }
         combinations.push([lengthSpan[i], widthSpan[j], sp, a1, a2, a3 + ' ' + Ayam[parseInt(a3)], a4,
         a5 + ' ' + varalu[parseInt(a5)], a6 + ' ' + thidulu[parseInt(a6)], a7 + ' ' + nakshatralu[parseInt(a7)],
-        a8 + ' ' + dhikpathulu[parseInt(a8)], a9 + ' ' + Amsha[parseInt(a9)], a10 + ' ' + Yogalu[parseInt(a10)], a1-a2])
+        a8 + ' ' + dhikpathulu[parseInt(a8)], a9 + ' ' + Amsha[parseInt(a9)], a10 + ' ' + Yogalu[parseInt(a10)], a1 - a2,
+          aExact])
       }
     }
     setData(combinations)
-  }, [lengthFrom, lengthTo, widthFrom, widthTo])
+  }, [lengthFrom, lengthTo, widthFrom, widthTo, isDecimal])
 
   return (<>
     <div>Ayam Finder</div>
@@ -118,6 +129,9 @@ function AyamFinder() {
         <label>Width To:</label>
         <input type="number" value={widthTo} onChange={(e) => setWidthTo(e.target.value)} />
       </div>
+      <button onClick={toggleDecimal}>
+        {isDecimal ? 'Hide' : 'Show'} Decimal
+      </button>
     </div>
     <h1>Select Your Preference</h1>
     <table className='border-col'>
@@ -137,6 +151,7 @@ function AyamFinder() {
           <th className='border-col'>అంశ</th>
           <th className='border-col'>యోగం</th>
           <th className='border-col'>Profit</th>
+          <th className='border-col'>Exact</th>
         </tr>
       </thead>
       <tbody>
