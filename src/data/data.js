@@ -157,7 +157,7 @@ export const details = {
         "check":"true",
         "list": Ayam,
         "flag":"true",
-        "glist": goodAmshas
+        "glist": goodAyam
     },
     "Vayasu":{
         "name": "వయస్సు",

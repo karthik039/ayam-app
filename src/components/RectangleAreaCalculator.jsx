@@ -4,8 +4,8 @@ import './RectangleAreaCalculator.css';
 import { details } from '../data/data';
 
 function RectangleAreaCalculator() {
-  const [length, setLength] = useState('18');
-  const [width, setWidth] = useState('19.5');
+  const [length, setLength] = useState('46.75');
+  const [width, setWidth] = useState('31');
 
   const [sp, setSP] = useState('');
 
@@ -21,7 +21,7 @@ function RectangleAreaCalculator() {
   useEffect(() => {
     const lengthNum = parseFloat(length);
     const widthNum = parseFloat(width);
-    let sp = (lengthNum * widthNum / 9)
+    let sp = Math.trunc(lengthNum * widthNum / 9)
     setSP(sp)
   }, [length, width])
   const detailsView = Object.keys(details).map(key =>
@@ -69,7 +69,7 @@ function RectangleAreaCalculator() {
         </div>
       </div>
 
-      <label>ShetraPadam = {length} x {width} / 9 = {length * width / 9}</label>
+      <label>ShetraPadam = {length} x {width} / 9 = {sp}</label>
 
       <h4>ఆయాది గణితము</h4>
       <table className='border-col'>
