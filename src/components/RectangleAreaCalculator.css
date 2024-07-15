@@ -76,6 +76,13 @@
     gap: 10px
 }
 
+.flex-div-info {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px
+}
+
 .success-text{
     color: green;
 }
@@ -87,4 +94,5 @@ color: red;
 .center {
     margin-left: auto;
     margin-right: auto;
+    margin: 5px;
   }

@@ -14,21 +14,21 @@ function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/ayam-app/">Home</Link>
             </li>
             <li>
-              <Link to="/finder">Finder</Link>
+              <Link to="/ayam-app/finder">Finder</Link>
             </li>
             <li>
-              <Link to="/info">Info</Link>
+              <Link to="/ayam-app/info">Info</Link>
             </li>
           </ul>
         </nav>
 
         <Routes>
-          <Route path="/" element={<RectangleAreaCalculator/>} />
-          <Route path="/finder" element={<AyamFinder/>} />
-          <Route path="/info" element={<AyamFinder/>} />
+          <Route path="/ayam-app/" element={<RectangleAreaCalculator/>} />
+          <Route path="/ayam-app/finder" element={<AyamFinder/>} />
+          <Route path="/ayam-app/info" element={<Info/>} />
         </Routes>
       </div>
     </Router>

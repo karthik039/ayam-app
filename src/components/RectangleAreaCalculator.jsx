@@ -84,7 +84,7 @@ function RectangleAreaCalculator() {
             <tr className='border-col'>
               <td className='border-col failure-text'>6 ఖరాయము <br />గాడిద</td>
               <td className='border-col success-text'>7 గజాయము <br /> ఏనుగు</td>
-              <td className='border-col failure-text'>8 శాకాయము <br /> కాకి </td>
+              <td className='border-col failure-text'>8 శాఖయము <br /> కాకి </td>
             </tr>
             <tr className='border-col'>
               {/* <td className='no-border'>West</td> */}

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Amsha, Ayam, details, dhikpathulu, goodAmshas, goodAyam, goodDhikpathulu, goodYogha, nakshatralu, thidulu, varalu, Yogalu } from '../data/data';
+import './RectangleAreaCalculator.css';
 
 function AyamFinder() {
 
