@@ -6,6 +6,7 @@ import RectangleAreaCalculator from './components/RectangleAreaCalculator';
 import AyamFinder from './components/AyamFinder';
 import Info from './components/Info'
 import './App.css';
+import Counter from './components/Counter';
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
             <li>
               <Link to="/ayam-app/info">Info</Link>
             </li>
+            <li>
+              <Link to="/ayam-app/counter">Counter</Link>
+            </li>
           </ul>
         </nav>
 
@@ -29,6 +33,7 @@ function App() {
           <Route path="/ayam-app/" element={<RectangleAreaCalculator/>} />
           <Route path="/ayam-app/finder" element={<AyamFinder/>} />
           <Route path="/ayam-app/info" element={<Info/>} />
+          <Route path="/ayam-app/counter" element={<Counter/>} />
         </Routes>
       </div>
     </Router>

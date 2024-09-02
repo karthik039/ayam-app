@@ -1,0 +1,84 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  /* Counter App Container */
+  .counter-app {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  /* Counter Section */
+  .counter {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .counter h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  /* Button Group Styling */
+  .button-group {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .button-group button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 30%;
+  }
+  
+  .button-group button:active {
+    transform: scale(0.98);
+  }
+  
+  /* Reset All Button Styling */
+  .reset-all {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .reset-all button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .reset-all button:active {
+    transform: scale(0.98);
+  }
+  
+  /* Mobile Responsive Styling */
+  @media (max-width: 600px) {
+    .counter-app {
+      width: 90%;
+    }
+  
+    .button-group button,
+    .reset-all button {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+  
