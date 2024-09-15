@@ -4,8 +4,8 @@ import './RectangleAreaCalculator.css';
 import { details } from '../data/data';
 
 function RectangleAreaCalculator() {
-  const [length, setLength] = useState('46.75');
-  const [width, setWidth] = useState('31');
+  const [length, setLength] = useState('45');
+  const [width, setWidth] = useState('30.75');
 
   const [sp, setSP] = useState('');
 
