@@ -10,11 +10,13 @@ const NavBar = () => {
       padding: '10px 20px',
       borderRadius: '8px',
       boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+      display: 'flex'
     },
     navList: {
       listStyle: 'none',
       display: 'flex',
-      gap: '15px',
+      gap: '10px',
+      flexWrap:'wrap',
       padding: '0',
       margin: '0',
       justifyContent: 'center',
@@ -22,7 +24,6 @@ const NavBar = () => {
     },
     navItem: {
       fontSize: '16px',
-      fontWeight: '500',
     },
     navLink: (isActive) => ({
       color: isActive ? '#fff' : '#007bff',  // White for active link, blue for others

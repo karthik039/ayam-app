@@ -56,8 +56,8 @@ const FeetInchesAdder = () => {
             name="inches"
             placeholder="Inches"
             value={input.inches}
+            style={styles.input}
             onChange={(e) => handleInputChange(index, e)}
-            
           /><label style={styles.label}>Inches</label>
         </div>
       ))}
@@ -79,7 +79,7 @@ const FeetInchesAdder = () => {
 const styles = {
   container: {
     padding: '20px',
-    maxWidth: '400px',
+    // maxWidth: '400px',
     margin: '20px auto',
     backgroundColor: '#f5f5f5',
     borderRadius: '10px',
@@ -97,7 +97,7 @@ const styles = {
     marginBottom: '15px',
   },
   input: {
-    width: '48%',
+    width: '25vw',
     padding: '10px',
     fontSize: '16px',
     borderRadius: '5px',
